@@ -1,0 +1,46 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": [
+        "google"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "ignorePatterns": "*.js",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "arrow-parens": ["error", "as-needed"],
+        "no-console": "off",
+        "no-debugger": "off",
+        "no-else-return": "off",
+        "no-plusplus": "off",
+        "no-use-before-define": ["error", { "functions": false }],
+        "object-curly-newline": "off",
+        "operator-linebreak": ["error", "after"],
+        "linebreak-style": ["error", "windows"],// 換行風格 預設是unix
+        "indent": [2, "tab"],// 縮排為兩格tab
+        "no-tabs": 0,//取消不能有tab
+        // "no-mixed-spaces-and-tabs": 0, // 混用space跟tab
+        "no-trailing-spaces": 0,
+        "object-curly-spacing": 0 ,
+        "space-before-function-paren": 0,
+        "quotes":["error","double"],
+        "strictPropertyInitialization": 0,
+        "require-jsdoc":["error", {// 決定哪些東西需要寫doc
+            "require": {
+                "FunctionDeclaration": true,
+                "MethodDefinition": false,
+                "ClassDeclaration": false,
+                "ArrowFunctionExpression": false,
+                "FunctionExpression": false
+            }
+        }]
+    }
+}

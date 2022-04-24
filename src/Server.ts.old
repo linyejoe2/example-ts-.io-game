@@ -1,0 +1,56 @@
+import express from "express";
+import { createServer } from "http";
+import * as socket from "socket.io";
+// import { EventEmitter } from 'stream';
+
+// import webpack from 'webpack';
+// import webpackDevMiddleware from 'webpack-dev-middleware';
+
+export class Server {
+	private app: express.Application = express();
+	private httpServer = createServer(this.app);
+	private PORT = Number(process.env.PORT) || 3001;
+	private http : any;
+	private io : any;
+
+	constructor() {
+		this.start();
+	}
+
+	private async start(): Promise<boolean> {
+		this.app = express();
+
+		await this.routes();
+		await this.connent();
+		await this.config();
+
+		return true;
+	}
+
+	private async config(): Promise<boolean> {
+		this.io = new socket.Server(this.http);
+
+		this.io.on("connection", (socket: { id: any; }) => {
+			console.log("Player connected!", socket.id);
+		});
+		return true;
+	}
+
+	private async routes(): Promise<boolean> {
+		// this.app.get('/', (req, res) => {
+		// 	res.send('example.io~2');
+		// });
+
+		this.app.use(express.static("/dist/client")); // 這段先抄原檔案的package TODO
+
+		return true;
+	}
+
+	private async connent(): Promise<boolean> {
+		this.app.listen(this.PORT, () => {
+			console.log("start server on http://localhost" + this.PORT);
+		});
+
+		return true;
+	}
+}

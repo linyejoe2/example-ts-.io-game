@@ -1,0 +1,23 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es2020", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "commonjs", /* Specify what module code is generated. */
+    "rootDir": "./src", /* Specify the root folder within your source files. */
+    "checkJs": false, /* Enable error reporting in type-checked JavaScript files. */
+    "outDir": "dist-packaged", /* Specify an output folder for all emitted files. */
+    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+    "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+    /* Type Checking */
+    "strict": true, /* Enable all strict type-checking options. */
+    "alwaysStrict": true, /* Ensure 'use strict' is always emitted. */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+  },
+  "include": ["./src"],
+  "exclude": [ // 指定編譯器需要排除的文件或文件夾
+    "./node_modules",
+    "dist-packaged",
+    "./src/*.test.*", // 排除test
+    "./src/*.ts.old"
+  ],
+}
